@@ -59,7 +59,7 @@ const drumPads = [
   },
 ];
 
-const DrumMachine = () => {
+function DrumMachine() {
   const [display, setDisplay] = useState('');
 
   const handlePadClick = (description) => {
@@ -83,6 +83,6 @@ const DrumMachine = () => {
       </div>
     </div>
   );
-};
+}
 
 export default DrumMachine;

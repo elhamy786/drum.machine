@@ -33,7 +33,7 @@
     {
       "files": ["src/**/*Slice.js"],
       "rules": {
-        "no-param-reassign": ["error", { "props": false }]
+        "linebreak-style": ["off"] // Turns off the rule completely
       }
     }
   ],

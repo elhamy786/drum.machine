@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-const DrumPad = ({
+function DrumPad({
   keyTrigger,
   url,
   description,
   onClick,
-}) => {
+}) {
   const handleClick = useCallback(() => {
     const audioElement = document.getElementById(keyTrigger);
     if (audioElement instanceof HTMLAudioElement) {
@@ -52,7 +52,7 @@ const DrumPad = ({
       {keyTrigger}
     </button>
   );
-};
+}
 
 DrumPad.propTypes = {
   keyTrigger: PropTypes.string.isRequired,
