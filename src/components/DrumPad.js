@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 const DrumPad = ({ keyTrigger, url, description, onClick }) => {
@@ -8,19 +8,17 @@ const DrumPad = ({ keyTrigger, url, description, onClick }) => {
       audioElement.pause();
       audioElement.currentTime = 0;
       audioElement.play().catch(error => {
-        console.error('Failed to play sound:', error);
+
       });
       onClick(description);
-    } else {
-      console.error(`Element with id ${keyTrigger} is not an HTMLAudioElement.`);
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = useCallback((e) => {
     if (e.key.toUpperCase() === keyTrigger) {
       handleClick();
     }
-  };
+  }, [keyTrigger]);
 
   React.useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
@@ -33,11 +31,12 @@ const DrumPad = ({ keyTrigger, url, description, onClick }) => {
       id={`pad-${keyTrigger}`}
       onClick={handleClick}
       onKeyPress={handleKeyPress}
-      role="button"
       tabIndex="0"
       aria-label={description}
+      type="button"
     >
       <audio className="clip" id={keyTrigger} src={url} />
+      {/* Captions are not typically used for audio-only elements like this drum pad */}
       {keyTrigger}
     </button>
   );
@@ -47,7 +46,7 @@ DrumPad.propTypes = {
   keyTrigger: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default DrumPad;
