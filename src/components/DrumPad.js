@@ -42,14 +42,14 @@ const DrumPad = ({
       aria-label={description}
       type="button"
     >
-    <audio
-      className="clip"
-      id={keyTrigger}
-      src={url}
-      role="presentation"
-      aria-hidden="true"
-    />
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <audio
+        className="clip"
+        id={keyTrigger}
+        src={url}
+        role="presentation" // Ensures role is suitable for non-interactive content
+        aria-hidden="true"
+      />
       {keyTrigger}
     </button>
   );
