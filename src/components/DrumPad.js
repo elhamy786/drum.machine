@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const DrumPad = ({ id, keyTrigger, url, description, onClick }) => {
+const DrumPad = ({ keyTrigger, url, description, onClick }) => {
   const handleClick = () => {
     const audioElement = document.getElementById(keyTrigger);
     if (audioElement instanceof HTMLAudioElement) {
-      audioElement.pause(); // Ensure the sound is stopped before trying to play it again
-      audioElement.currentTime = 0; // Rewind to the start
+      audioElement.pause();
+      audioElement.currentTime = 0;
       audioElement.play().catch(error => {
-        console.error("Failed to play sound:", error);
+        console.error('Failed to play sound:', error);
       });
       onClick(description);
     } else {
@@ -24,14 +25,29 @@ const DrumPad = ({ id, keyTrigger, url, description, onClick }) => {
   React.useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [keyTrigger]);
+  }, [handleKeyPress]);
 
   return (
-    <div className="drum-pad" id={`pad-${keyTrigger}`} onClick={handleClick}>
-      <audio className="clip" id={keyTrigger} src={url}></audio>
+    <button
+      className="drum-pad"
+      id={`pad-${keyTrigger}`}
+      onClick={handleClick}
+      onKeyPress={handleKeyPress}
+      role="button"
+      tabIndex="0"
+      aria-label={description}
+    >
+      <audio className="clip" id={keyTrigger} src={url} />
       {keyTrigger}
-    </div>
+    </button>
   );
+};
+
+DrumPad.propTypes = {
+  keyTrigger: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default DrumPad;

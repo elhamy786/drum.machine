@@ -19,7 +19,7 @@ body {
 }
 
 #drum-machine {
-  background: linear-gradient(145deg, #ff6600, #6f4e37);
+  background: linear-gradient(145deg, #f60, #6f4e37);
   padding: 30px;
   border-radius: 25px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -34,7 +34,7 @@ body {
   font-size: 1.8rem;
   margin-bottom: 25px;
   text-align: center;
-  color: #ffcc99;
+  color: #fc9;
   background-color: #3c2415;
   padding: 15px 30px;
   border-radius: 15px;
@@ -67,7 +67,7 @@ body {
 }
 
 .drum-pad:active {
-  background-color: #ff9933;
+  background-color: #f93;
   transform: translateY(0);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
