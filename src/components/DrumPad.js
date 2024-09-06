@@ -47,7 +47,6 @@ const DrumPad = ({
         className="clip"
         id={keyTrigger}
         src={url}
-        role="presentation"
         aria-hidden="true"
       />
       {keyTrigger}
