@@ -34,7 +34,7 @@ body::after {
 
 ## Demo 📸
 
-[Live Demo](https://deploy-preview-1--aquamarine-nougat-106d52.netlify.app/)
+[Live Demo](https://drum-machine--neon-starburst-037542.netlify.app/)
 
 ![Screenshot](./src/components/Screenshot%202024-09-06%20142126.png)
 
